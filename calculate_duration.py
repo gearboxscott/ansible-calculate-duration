@@ -1,15 +1,8 @@
 #!/usr/bin/python
-# Copyright (c) 2021 [Scott Parker]
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
 
-ANSIBLE_METADATA = {'metadata_version': '1.0',
-                    'status': ['preview'],
-                    'supported_by': 'community'}
-                    
 DOCUMENTATION = r'''
 ---
 module: calculate_duration
@@ -24,8 +17,9 @@ options:
     calculate_duration:
       date: This is date and time to start appending duration (fmt: %Y-%m-%d %H:%M:%S )
       duration: Number of units to add. (int)
-      jY-%m-%d
-    sample: '2021-02-19'
+      units: Number of some unit to add to the passed in date and time (string).
+             Choices: days, seconds, microseconds, milliseconds, minutes, hours, weeks  
+             sample: 'units: hours'
 
 author:
     - Scott Parker (@gearboxscott)
@@ -40,7 +34,7 @@ EXAMPLE = r'''
     units: hours
   register: patch_window_close
 
-Produces:
+Output Produced:
 
 {
     "changed": true,
